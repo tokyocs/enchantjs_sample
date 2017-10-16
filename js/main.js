@@ -20,13 +20,16 @@ window.onload = function(){
 
     // 
     bear.addEventListener('enterframe', function(){
-      // 
-      this.x += 10;
-      // 
-      if (this.x > 480) this.x = 0;
+      if (core.input.left) this.x -= 5;
+      if (core.input.right) this.x += 5;
+      if (core.input.up) this.y -= 5;
+      if (core.input.down) this.y += 5;
     });
-
     // 
+    core.rootScene.on('touchstart',function(e){
+      bear.x = e.x;
+      bear.y = e.y;
+    });
     core.rootScene.addChild(bear);
   }
   // 処理を開始する
